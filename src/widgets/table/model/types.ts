@@ -1,3 +1,10 @@
+export type InitialStateType = {
+    reportsData: ModelReportDataType[],
+    isLoading: boolean
+    error: string
+    currentPage: number
+}
+
 export type ReportDataType = {
     accessionNumber: string;
     AccountsPayableCurrent: number;
@@ -71,7 +78,7 @@ export type ReportDataType = {
     DocumentAnnualReport: string;
     DocumentFiscalPeriodFocus: string;
     DocumentFiscalYearFocus: number;
-    DocumentPeriodEndDate: Date;
+    DocumentPeriodEndDate: string;
     DocumentTransitionReport: string;
     documentType: string;
     EarningsPerShareBasic: number;
@@ -277,9 +284,10 @@ export type ReportDataType = {
 export type ModelReportDataType = {
     tradingSymbol: string,
     entityName: string,
-    documentPeriodEndDate: Date,
+    documentPeriodEndDate: string,
     revenueFromContractWithCustomerExcludingAssessedTax: number,
     operatingIncomeLoss: number,
     netIncomeLoss: number,
     earningsPerShareDiluted: number
 }
+

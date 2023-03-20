@@ -1,11 +1,16 @@
-
-import {setCurrentPage, Table, usePagination} from "widgets/table";
+import {
+    selectorCurrentPage,
+    selectorError,
+    selectorLoading,
+    selectorReportsData,
+    setCurrentPage,
+    Table,
+    usePagination
+} from "widgets/table";
 import styles from './Home.module.scss'
 import {Pagination} from "shared/ui/pagination/Pagination";
-import {useAppSelector} from "shared/lib/hooks/useAppSelector/useAppSelector";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Header} from "widgets/header/Header";
-
 
 export const HomePage = () => {
 
@@ -20,7 +25,10 @@ export const HomePage = () => {
         {label: "Прибыль на акцию", accessor: "earningsPerShareDiluted"},
     ];
 
-    const {reportsData, error, isLoading, currentPage} = useAppSelector(state => state.reportData)
+    const reportsData = useSelector(selectorReportsData)
+    const error = useSelector(selectorError)
+    const isLoading = useSelector(selectorLoading)
+    const currentPage = useSelector(selectorCurrentPage)
     const dispatch = useDispatch()
 
     const currentPageCallback = (page: number) => {

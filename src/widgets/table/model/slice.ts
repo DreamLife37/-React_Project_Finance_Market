@@ -1,18 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ModelReportDataType} from "./types";
+import {InitialStateType, ModelReportDataType} from "./types";
 import {fetchAllReportsTC} from "./thunks";
 
-type InitialStateType = {
-    reportsData: ModelReportDataType[],
-    favorites: ModelReportDataType[],
-    isLoading: boolean
-    error: string
-    currentPage: number
-}
 
 const initialState: InitialStateType = {
     reportsData: [],
-    favorites: [],
     isLoading: false,
     error: '',
     currentPage: 1
