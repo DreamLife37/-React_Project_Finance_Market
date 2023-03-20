@@ -1,0 +1,5 @@
+export {Table} from './ui/Table'
+export {reportsReducer, setCurrentPage} from './model/slice'
+export {api} from './api/getReportsData'
+export {fetchAllReportsTC} from './model/thunks'
+export {usePagination} from './lib/hooks/usePagination'

@@ -1,0 +1,13 @@
+.header {
+  font-size: 22px;
+  height: 60px;
+  background-color: #DDEDFF;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+
+  .logo {
+    padding-right: 40px;
+    padding-left: 20px;
+  }
+}
