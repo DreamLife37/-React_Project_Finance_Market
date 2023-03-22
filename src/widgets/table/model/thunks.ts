@@ -1,9 +1,10 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {api} from "../api/getReportsData";
 import {AxiosError} from "axios";
-import {ModelReportDataType} from "./types";
+import {Error, ModelReportDataType} from "./types";
+import {handleError} from "../lib/utils/handleError";
 
-export const fetchAllReportsTC = createAsyncThunk<ModelReportDataType[], undefined, { rejectValue: string }>(
+export const fetchAllReportsTC = createAsyncThunk<ModelReportDataType[], undefined, { rejectValue: string | Error }>(
     'reports/getAllReports',
     async (_, thunkAPI) => {
         try {
@@ -22,9 +23,6 @@ export const fetchAllReportsTC = createAsyncThunk<ModelReportDataType[], undefin
             })
         } catch (err) {
             const error = err as AxiosError<Error>;
-            if (error.response?.data) {
-                return thunkAPI.rejectWithValue(JSON.stringify(error.response?.data))
-            }
-            return thunkAPI.rejectWithValue('Не удалось загрузить данные')
+            return thunkAPI.rejectWithValue(handleError(error))
         }
     })

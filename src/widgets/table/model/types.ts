@@ -5,6 +5,14 @@ export type InitialStateType = {
     currentPage: number
 }
 
+export type Error = {
+    name: string;
+    message: string;
+    stack?: string;
+    error: string
+}
+
+
 export type ReportDataType = {
     accessionNumber: string;
     AccountsPayableCurrent: number;
