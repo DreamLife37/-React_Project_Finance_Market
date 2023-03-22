@@ -57,7 +57,7 @@ describe('selectorCurrentPage', () => {
             }
         })).toBe(0)
     })
-    test('work with 15 value', () => {
+    test('work with value', () => {
         expect(selectorCurrentPage({
             reportData: {
                 reportsData: Array(0),
