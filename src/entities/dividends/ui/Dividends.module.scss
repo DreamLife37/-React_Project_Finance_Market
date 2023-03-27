@@ -1,0 +1,73 @@
+.dividends {
+  background-color: #ffffff;
+  height: 100%;
+  border-radius: 8px;
+  color: #2d2d2d;
+  transition: box-shadow .4s;
+  border: 1px solid #e2e2e2;
+
+  .dividendsSkeleton {
+    --color: rgb(223, 223, 223);
+    background-repeat: no-repeat;
+    height: 132px;
+    animation: fade 1s linear infinite alternate;
+
+    background-image: linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0);
+
+    background-size: 40% 26px,
+    40% 20px,
+    40% 20px,
+    20% 20px,
+    20% 20px;
+
+    background-position: 50% 26px,
+    30% 56px,
+    30% 86px,
+    80% 56px,
+    80% 86px;
+  }
+
+  .dividends__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 20px;
+    overflow: hidden;
+    gap: 5px 0;
+    align-items: center;
+
+    .dividends__no {
+      color: #838383;
+    }
+
+    .dividends__title {
+      font-weight: 500;
+      font-size: 18px;
+      color: #2C2C2C;
+    }
+
+    .dividends__body {
+      display: flex;
+      gap: 0 20px;
+      color: #838383;
+
+      .dividends__amount {
+        font-weight: 500;
+        color: #2C2C2C;
+      }
+    }
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

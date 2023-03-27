@@ -1,0 +1,132 @@
+.quote {
+  background-color: #ffffff;
+  height: 100%;
+  border-radius: 8px;
+  color: #2d2d2d;
+  transition: box-shadow .4s;
+  border: 1px solid #e2e2e2;
+
+  .quoteSkeleton {
+    --color: rgb(223, 223, 223);
+    background-repeat: no-repeat;
+    height: 132px;
+    animation: fade 1s linear infinite alternate;
+
+    background-image: linear-gradient(var(--color) 30px, transparent 0),
+    linear-gradient(var(--color) 35px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0);
+
+    background-size: 30px 30px,
+    40% 35px,
+    50px 20px,
+    50px 20px,
+    230px 15px,
+    230px 15px;
+
+    background-position: 20px 20px,
+    50% 20px,
+    230px 20px,
+    230px 46px,
+    50% 76px,
+    50% 96px;
+  }
+
+  .quote__inner {
+    padding: 20px;
+
+    .quote__no {
+      color: #838383;
+      text-align: center;
+    }
+
+    .quote__innerTop {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .quote__logoSymbol {
+        font-size: 28px;
+        font-weight: 500;
+        color: #2C2C2C;
+      }
+    }
+
+    .quote__innerBottom {
+      text-align: center;
+      padding-top: 10px;
+      color: #838383;
+
+      .quote__52min {
+        font-weight: 500;
+        color: #2C2C2C;
+      }
+
+      .quote__52max {
+        font-weight: 500;
+        color: #2C2C2C;
+      }
+    }
+
+    .quote__price {
+      font-weight: 500;
+      color: #2C2C2C;
+    }
+
+    .quote__downPrice {
+      position: relative;
+    }
+
+    .quote__upPrice {
+      position: relative;
+    }
+
+    .quote__downPrice::before {
+      position: absolute;
+      content: "";
+      left: -20px;
+      top: 4px;
+      width: 50px;
+      height: 50px;
+      background-image: url(../assets/image/down.svg);
+      background-repeat: no-repeat;
+    }
+
+    .quote__upPrice::before {
+      position: absolute;
+      content: "";
+      left: -20px;
+      top: 4px;
+      width: 50px;
+      height: 50px;
+      background-image: url(../assets/image/up.svg);
+      background-repeat: no-repeat;
+    }
+
+    .quote__logoImg {
+      width: 30px;
+    }
+
+    .quote__changePercent_up {
+      font-family: 'Everett', sans-serif;
+      color: #77B900;
+    }
+
+    .quote__changePercent_down {
+      font-family: 'Everett', sans-serif;
+      color: #E8464C;
+    }
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

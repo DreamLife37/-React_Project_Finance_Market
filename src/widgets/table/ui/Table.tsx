@@ -11,18 +11,22 @@ export type ColumnType = {
 }
 
 type PropsType = {
-    data:ModelReportDataType[]
+    data: ModelReportDataType[]
     isLoading: boolean
     columns: ColumnType[]
+    onClickSymbol: (symbol: string) => void
 }
 
-export const Table: FC <PropsType>= ({ data, isLoading,columns}) => {
+export const Table: FC<PropsType> = ({data, isLoading, columns, onClickSymbol}) => {
+    const sortData = (label: string) => {
+        console.log(label)
+    }
 
     return <table className={styles.table}>
-        <TableHead columns={columns}/>
+        <TableHead columns={columns} sortData={sortData}/>
         {isLoading
             ? <SkeletonTable columnSkeleton={8} rowSkeleton={10}/>
-            : <TableBody columns={columns} data={data}/>
+            : <TableBody onClickSymbol={onClickSymbol} columns={columns} data={data}/>
         }
     </table>
 }

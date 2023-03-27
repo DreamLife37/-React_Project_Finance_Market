@@ -1,87 +1,194 @@
 import {selectorCurrentPage, selectorError, selectorLoading, selectorReportsData} from "../../model/selectors";
+import {QuoteDataType} from "../../../../entities/quote/model/types";
 
 describe('selectorLoading', () => {
+
     test('work with true value', () => {
-        expect(selectorLoading({
+        const state = {
             reportData: {
                 reportsData: Array(0),
                 isLoading: true,
                 error: '',
                 currentPage: 1
+            },
+            stockInfo: {
+                stockInfoData: {
+                    quoteAndNews: {
+                        quote: {} as QuoteDataType,
+                        news: [],
+                    },
+                    dividends: []
+                },
+                isLoadingDividends: false,
+                isLoadingQuoteAndNews: false,
+                error: '',
+                currentStock: 'AAPL',
+                logoURL: 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png'
             }
-        })).toBe(true)
+        }
+        expect(selectorLoading(state)).toBe(true)
     })
     test('work with false value', () => {
-        expect(selectorLoading({
+        const state = {
             reportData: {
                 reportsData: Array(0),
                 isLoading: false,
                 error: '',
                 currentPage: 1
+            },
+            stockInfo: {
+                stockInfoData: {
+                    quoteAndNews: {
+                        quote: {} as QuoteDataType,
+                        news: [],
+                    },
+                    dividends: []
+                },
+                isLoadingDividends: false,
+                isLoadingQuoteAndNews: false,
+                error: '',
+                currentStock: 'AAPL',
+                logoURL: 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png'
             }
-        })).toBe(false)
+        }
+        expect(selectorLoading(state)).toBe(false)
     })
 })
 
 describe('selectorError', () => {
     test('work with empty value', () => {
-        expect(selectorError({
+        const state = {
             reportData: {
                 reportsData: Array(0),
-                isLoading: false,
+                isLoading: true,
                 error: '',
                 currentPage: 1
+            },
+            stockInfo: {
+                stockInfoData: {
+                    quoteAndNews: {
+                        quote: {} as QuoteDataType,
+                        news: [],
+                    },
+                    dividends: []
+                },
+                isLoadingDividends: false,
+                isLoadingQuoteAndNews: false,
+                error: '',
+                currentStock: 'AAPL',
+                logoURL: 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png'
             }
-        })).toBe('')
+        }
+        expect(selectorError(state)).toBe('')
     })
     test('work with string value', () => {
-        expect(selectorError({
+        const state = {
             reportData: {
                 reportsData: Array(0),
-                isLoading: false,
+                isLoading: true,
                 error: 'Error',
                 currentPage: 1
+            },
+            stockInfo: {
+                stockInfoData: {
+                    quoteAndNews: {
+                        quote: {} as QuoteDataType,
+                        news: [],
+                    },
+                    dividends: []
+                },
+                isLoadingDividends: false,
+                isLoadingQuoteAndNews: false,
+                error: '',
+                currentStock: 'AAPL',
+                logoURL: 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png'
             }
-        })).toBe('Error')
+        }
+        expect(selectorError(state)).toBe('Error')
     })
 })
 
 describe('selectorCurrentPage', () => {
     test('work with 0 value', () => {
-        expect(selectorCurrentPage({
+        const state = {
             reportData: {
                 reportsData: Array(0),
-                isLoading: false,
+                isLoading: true,
                 error: '',
                 currentPage: 0
+            },
+            stockInfo: {
+                stockInfoData: {
+                    quoteAndNews: {
+                        quote: {} as QuoteDataType,
+                        news: [],
+                    },
+                    dividends: []
+                },
+                isLoadingDividends: false,
+                isLoadingQuoteAndNews: false,
+                error: '',
+                currentStock: 'AAPL',
+                logoURL: 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png'
             }
-        })).toBe(0)
+        }
+        expect(selectorCurrentPage(state)).toBe(0)
     })
     test('work with value', () => {
-        expect(selectorCurrentPage({
+        const state = {
             reportData: {
                 reportsData: Array(0),
-                isLoading: false,
+                isLoading: true,
                 error: '',
                 currentPage: 15
+            },
+            stockInfo: {
+                stockInfoData: {
+                    quoteAndNews: {
+                        quote: {} as QuoteDataType,
+                        news: [],
+                    },
+                    dividends: []
+                },
+                isLoadingDividends: false,
+                isLoadingQuoteAndNews: false,
+                error: '',
+                currentStock: 'AAPL',
+                logoURL: 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png'
             }
-        })).toBe(15)
+        }
+        expect(selectorCurrentPage(state)).toBe(15)
     })
 })
 
 describe('selectorReportsData', () => {
     test('work with empty value', () => {
-        expect(selectorReportsData({
+        const state = {
             reportData: {
                 reportsData: Array(0),
-                isLoading: false,
+                isLoading: true,
                 error: '',
-                currentPage: 0
+                currentPage: 1
+            },
+            stockInfo: {
+                stockInfoData: {
+                    quoteAndNews: {
+                        quote: {} as QuoteDataType,
+                        news: [],
+                    },
+                    dividends: []
+                },
+                isLoadingDividends: false,
+                isLoadingQuoteAndNews: false,
+                error: '',
+                currentStock: 'AAPL',
+                logoURL: 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png'
             }
-        })).toEqual([])
+        }
+        expect(selectorReportsData(state)).toEqual([])
     })
     test('work with value', () => {
-        expect(selectorReportsData({
+        const state = {
             reportData: {
                 reportsData: [{
                     tradingSymbol: 'AAPL',
@@ -91,9 +198,27 @@ describe('selectorReportsData', () => {
                     operatingIncomeLoss: 100000,
                     netIncomeLoss: 20000000,
                     earningsPerShareDiluted: 2
-                }], isLoading: false, error: '', currentPage: 0
+                }],
+                isLoading: true,
+                error: '',
+                currentPage: 1
+            },
+            stockInfo: {
+                stockInfoData: {
+                    quoteAndNews: {
+                        quote: {} as QuoteDataType,
+                        news: [],
+                    },
+                    dividends: []
+                },
+                isLoadingDividends: false,
+                isLoadingQuoteAndNews: false,
+                error: '',
+                currentStock: 'AAPL',
+                logoURL: 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png'
             }
-        })).toEqual([{
+        }
+        expect(selectorReportsData(state)).toEqual([{
             tradingSymbol: 'AAPL',
             entityName: 'APPLE',
             documentPeriodEndDate: "2022-12-31",

@@ -8,9 +8,10 @@ import {
     usePagination
 } from "widgets/table";
 import styles from './Home.module.scss'
-import {Pagination} from "shared/ui/pagination/Pagination";
 import {useDispatch, useSelector} from "react-redux";
-import {Header} from "widgets/header/Header";
+import {setCurrentStock, StockInfo} from "widgets/stockInfo";
+import {Pagination} from "shared";
+import { Header } from "widgets/header";
 
 export const HomePage = () => {
 
@@ -35,16 +36,22 @@ export const HomePage = () => {
         dispatch(setCurrentPage(page))
     }
 
+    const currentSymbolCallback = (symbol: string) => {
+        dispatch(setCurrentStock(symbol))
+    }
+
     const {currentData, totalPages} = usePagination(reportsData, 10, currentPage)
 
-    return <div>
+    return <div className={styles.home}>
         <Header/>
+        <section className={styles.tableContainer}><StockInfo/></section>
         <section className={styles.tableContainer}>
             {error
                 ? <div className={styles.error}>{error}</div>
                 : reportsData &&
                 <div className={styles.tableWrapper}>
-                    <Table isLoading={isLoading} data={currentData} columns={columns}/>
+                    <Table isLoading={isLoading} data={currentData} columns={columns}
+                           onClickSymbol={currentSymbolCallback}/>
                     <Pagination totalPages={totalPages} currentPageCallback={currentPageCallback}
                                 currentPage={currentPage}/>
                 </div>}
