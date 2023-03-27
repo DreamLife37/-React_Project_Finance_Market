@@ -1,0 +1,102 @@
+.new {
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+
+  .newsSkeleton {
+    --color: rgb(223, 223, 223);
+    background-repeat: no-repeat;
+    height: 280px;
+    animation: fade 1s linear infinite alternate;
+
+    background-image: linear-gradient(var(--color) 150px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0),
+    linear-gradient(var(--color) 20px, transparent 0);
+
+    background-size: 100% 150px,
+    70% 20px,
+    70% 20px;
+
+    background-position: 0 0,
+    50% 170px,
+    50% 200px;
+
+    border-radius: 8px;
+  }
+
+  .new__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    margin: 0;
+    background: #fff;
+    border-radius: 8px;
+    color: #2d2d2d;
+    transition: box-shadow .4s;
+    border: 1px solid #e2e2e2;
+    border-top: 0;
+    text-decoration: none;
+    cursor: pointer;
+
+    .new__header {
+      height: 150px;
+
+      .new__wrapper_img {
+        position: relative;
+        overflow: hidden;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: inherit;
+        background-color: #e2e2e2;
+        border-radius: 8px 8px 0 0;
+        -o-object-fit: cover;
+        object-fit: cover;
+
+        .new__img {
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+          color: transparent;
+          -o-object-fit: cover;
+          object-fit: cover;
+          text-indent: -9999px;
+          transition: opacity .3s;
+        }
+      }
+    }
+
+    .new__body {
+      text-align: center;
+
+      .new__title {
+        color: #838383;
+        padding: 15px;
+        font-size: 15px;
+        line-height: 20px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 45px;
+      }
+    }
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

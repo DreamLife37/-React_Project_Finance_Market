@@ -8,13 +8,13 @@
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
-  //overflow-wrap: break-word;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .tableTr:hover {
+  cursor: pointer;
   background-color: aliceblue;
 }
 
